@@ -1,0 +1,25 @@
+field.value.cookies:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    name:
+      type: text
+      label: 'Name'
+    value:
+      type: string
+      label: 'Value'
+    expiration:
+      type: string
+      label: 'Cookie Expiration'
+    path:
+      type: string
+      label: 'Cookie Path'
+    domain:
+      type: string
+      label: 'Cookie Domain'
+    secure:
+      type: boolean
+      label: 'Secure'
+    http_only:
+      type: boolean
+      label: 'HTTP Only'

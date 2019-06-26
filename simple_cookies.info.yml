@@ -1,0 +1,5 @@
+name: 'Simple Cookies'
+type: module
+description: 'Simple Cookies allows content editors to add a custom cookie field to entities that will set cookies for their users.'
+core: 8.x
+package: 'Custom'

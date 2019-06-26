@@ -1,0 +1,13 @@
+{
+    "name": "kyleleber/simplecookies",
+    "description": "Drupal 8 module for integrating a field based cookie creation mechanism.",
+    "type": "drupal-module",
+    "authors": [
+        {
+            "name": "Kyle Leber",
+            "email": "kyleleber2014@gmail.com"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {}
+}

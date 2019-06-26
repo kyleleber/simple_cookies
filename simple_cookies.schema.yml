@@ -1,0 +1,12 @@
+# Schema for the configuration files of the simple cookies module.
+
+field.value.cookie:
+  type: mapping
+  label: 'Default value'
+  mapping:
+    name:
+      type: text
+      label: 'Name'
+    value:
+      type: string
+      label: 'Value'

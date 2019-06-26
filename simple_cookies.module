@@ -1,0 +1,52 @@
+<?php
+
+use Drupal\Core\Entity\ContentEntityInterface;
+use Symfony\Component\HttpFoundation\Cookie;
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * {@inheritdoc}
+ */
+function simple_cookies_page_attachments(&$attachments) {
+  $route_match = \Drupal::routeMatch();
+  $admin_context = \Drupal::service('router.admin_context');
+
+  // Only set cookies if not on an administrative route.
+  // @TODO - Find a better way to do this.
+  if (!$admin_context->isAdminRoute()) {
+    if (($route = $route_match->getRouteObject()) && ($parameters = $route->getOption('parameters'))) {
+      foreach ($parameters as $name => $options) {
+        // Determine if the current route represents an entity.
+        if (isset($options['type']) && strpos($options['type'], 'entity:') === 0) {
+          $entity = $route_match->getParameter($name);
+          if ($entity instanceof ContentEntityInterface && $entity->hasLinkTemplate('canonical')) {
+            foreach ($entity->getFields() as $field) {
+              // If the entity has a cookie field, load its complex values.
+              if ($field->getFieldDefinition()->getType() === "cookie") {
+                // Attach the cookies library.
+                $attachments['#attached']['library'][] = 'simple_cookies/cookies';
+
+                // Iterate over each of the cookie's field and set appropriate values.
+                foreach ($field->getValue() as $value) {
+                  $name = $value['name'] ?: NULL;
+                  $val = $value['value'] ?: NULL;
+                  $expiration = $value['expiration'] ?: '+30 days';
+                  $path = $value['path'] ?: '/';
+                  $domain = $value['domain'] ?: NULL;
+                  $secure = $value['secure'] ?: FALSE;
+                  $http_only = $value['http_only'] ?: FALSE;
+                  if ($name && $val) {
+                    $cookie = new Cookie($name, $val, $expiration, $path, $domain, $secure, $http_only);
+                    $attachments['#attached']['drupalSettings']['cookies'][] = $cookie->__toString();
+                  }
+                }
+
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

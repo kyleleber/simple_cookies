@@ -1,0 +1,7 @@
+cookies:
+  js:
+    js/cookies.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings
