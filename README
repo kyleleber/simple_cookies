@@ -1,0 +1,53 @@
+CONTENTS OF THIS FILE
+---------------------
+ * Introduction
+ * Requirements
+ * Recommended modules
+ * Installation
+ * Configuration
+ * Examples
+ * Troubleshooting
+ * FAQ
+ * Maintainers
+
+INTRODUCTION
+------------
+The `simple_cookies` module provides functionality to create basic cookies on a per entity
+basis. The module provides a Cookie field type that allows users to create specified cookies
+by adding the field to any standard content type / custom entity.
+
+REQUIREMENTS
+------------
+This module has no other module dependencies.
+
+RECOMMENDED MODULES
+-------------------
+This module can be used in tangent with https://drupal.org/project/smart_content to provide
+a personalized experience based on cookies for end users.
+
+INSTALLATION
+------------
+On initial installation, a new field will be created within Drupal. This field will need to be
+added to a content type / custom entity to leverage this field. Once the field is added, create a new
+piece of content as is typically done. Once the content is saved, when a user visits that page,
+a cookie(s) will be set on the user's browser based on the criteria put in the field.
+
+CONFIGURATION
+-------------
+This module provides a new field plugin.
+
+EXAMPLES
+--------
+N/A
+
+TROUBLESHOOTING
+---------------
+N/A
+
+FAQ
+---
+N/A
+
+MAINTAINERS
+-----------
+Kyle Leber <kyleleber2014@gmail.com>
