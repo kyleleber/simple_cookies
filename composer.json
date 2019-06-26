@@ -1,5 +1,5 @@
 {
-    "name": "kyleleber/simplecookies",
+    "name": "kyleleber/simple_cookies",
     "description": "Drupal 8 module for integrating a field based cookie creation mechanism.",
     "type": "drupal-module",
     "authors": [
